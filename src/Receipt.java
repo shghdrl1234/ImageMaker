@@ -1,47 +1,12 @@
+import DTO.Dummy;
+
 public class Receipt {
 
-    public String first() {
+    public String html() {
 
-        return " <!DOCTYPE html>\n"
-            + "<html lang=\"ko\">\n"
-            + "\n"
-            + "<head>\n"
-            + "  <meta charset=\"UTF-8\">\n"
-            + "  <style>\n"
-            + "    .end {\n"
-            + "      text-align: end;\n"
-            + "    }\n"
-            + " body { background : white; }"
-            + "  </style>\n"
-            + "</head>\n"
-            + "\n"
-            + "<body>\n"
-            + "  <table style=\"border: solid 1px; width : 280px;\">\n"
-            + "    <thead>\n"
+        return "    <tbody>\n"
             + "      <tr>\n"
-            + "        <td colspan=\"4\">\n"
-            + "          <br><b>총 결제금액</b>\n"
-            + "          <br>\n"
-            + "          <h3>52,800 원</h3>\n"
-            + "          <hr>\n"
-            + "        </td>\n"
-            + "      </tr>\n"
-            + "    </thead>\n"
-            + "    <tbody style=\"font-size : 12px;\">\n"
-            + "      <tr>\n"
-            + "        <td colspan=3><b>gdgd</b></td>\n"
-            + "        <td class=\"end\"><b>39,900원</b></td>\n"
-            + "      </tr>\n"
-            + "      <tr>\n"
-            + "        <td colspan=3><b>회원복</b></td>\n"
-            + "        <td class=\"end\"><b>3,000원</b></td>\n"
-            + "      </tr>\n"
-            + "      <tr>\n"
-            + "        <td colspan=3><b>락커</b></td>\n"
-            + "        <td class=\"end\"><b>9,990 원</b></td>\n"
-            + "      </tr>\n"
-            + "      <tr>\n"
-            + "        <td colspan=4>-------------------------------------------------------</td>\n"
+            + "       <td colspan=4>------------------------------------------------------------------</td>\n"
             + "      </tr>\n"
             + "      <tr>\n"
             + "        <td colspan=3>승인 번호</td>\n"
@@ -64,7 +29,7 @@ public class Receipt {
             + "        <td class=\"end\">일시불</td>\n"
             + "      </tr>\n"
             + "      <tr>\n"
-            + "        <td colspan=4>-------------------------------------------------------</td>\n"
+            + "        <td colspan=4>------------------------------------------------------------------</td>\n"
             + "      </tr>\n"
             + "      <tr>\n"
             + "        <td colspan=3>구매 상점</td>\n"
@@ -86,13 +51,48 @@ public class Receipt {
             + "        <td colspan=3>주소</td>\n"
             + "        <td class=\"end\">부산광역시 부산진구 부전동 165-2 B1</td>\n"
             + "      </tr>\n"
-            + "      <td colspan=4>-------------------------------------------------------</td>\n"
+            + "      <td colspan=4>------------------------------------------------------------------</td>\n"
             + "      </tr>\n"
             + "    </tbody>\n"
-            + "  </table>\n"
-            + "</body>\n"
-            + "\n"
-            + "</html>";
+            + "  </table>\n";
     }
 
+    public String css() {
+        return  " .end { text-align: right;}"
+                + "table { border: solid 1px;}"
+                + " th { font-size : 25px;}"
+                + " td { font-size : 15px;}"
+                + " body { font-family: 'Nanum Gothic Coding', monospace;}";
+
+    }
+
+    public String font() {
+        return "<link rel=\"preconnect\" href=\"https://fonts.googleapis.com\">\n" +
+                "<link rel=\"preconnect\" href=\"https://fonts.gstatic.com\" crossorigin>\n" +
+                "<link href=\"https://fonts.googleapis.com/css2?family=Nanum+Gothic+Coding&display=swap\" rel=\"stylesheet\">";
+    }
+
+    public String object(Dummy dummy) {
+
+        String obj = "";
+        for(Object o : dummy.getObj()) {
+            String[] arr = (String[]) o;
+            obj += "<tr>"
+                    +"<td colspan=3><b>"+arr[0]+"</b></td>"
+                    +"<td class=\"end\"><b>"+arr[1]+"</b></td>"
+                    +"</tr>";
+        }
+
+         return " <table>\n"
+                 + "    <th>\n"
+                 + "      <tr>\n"
+                 + "        <td colspan=\"4\">\n"
+                 + "          <br><b>총 결제금액</b>\n"
+                 + "          <br>\n"
+                 + "          <h3>52,800 원</h3>\n"
+                 + "          <hr>\n"
+                 + "        </td>\n"
+                 + "      </tr>\n"
+                 + "    </th>\n" + obj;
+    }
 }
