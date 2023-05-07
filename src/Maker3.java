@@ -1,25 +1,35 @@
 import DTO.Dummy;
-import receipts.IReceipt;
-
-import javax.imageio.ImageIO;
-import javax.swing.*;
-import java.awt.*;
+import java.awt.Dimension;
+import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
-import receipts.serviceImpl.Receipt5;
+import java.util.Random;
+import javax.imageio.ImageIO;
+import javax.swing.JEditorPane;
+import receipts.IReceipt;
+import receipts.ReceiptFactory;
+import receipts.receiptFactory.Receipt1Factory;
+import receipts.receiptFactory.Receipt2Factory;
+import receipts.receiptFactory.Receipt3Factory;
+import receipts.receiptFactory.Receipt4Factory;
+import receipts.receiptFactory.Receipt5Factory;
+import receipts.receiptFactory.Receipt6Factory;
 
-public class Maker2 {
+public class Maker3 {
 
     public static void main(String[] args) {
 
         List data = new ArrayList();
         data.add(new String[]{"안녕","1,000","12","12,000"});
         data.add(new String[]{"안녕2","1,000","13","13,000"});
-
-
 
         Dummy dummy = new Dummy();
         dummy.setObj(data);
@@ -30,18 +40,28 @@ public class Maker2 {
         dummy.setPaymentDate("2023-05-07");
         dummy.setRepresentative("노홍기");
         dummy.setAddress("부산광역시 부산진구 부전 2동 000-000");
+        dummy.setUser("shghdrl");
 
+        ReceiptFactory receiptFactory;
+        Random rd = new Random();
+        switch (rd.nextInt(6)+1) {
+            case 6: receiptFactory = new Receipt6Factory(); break;
+            case 5: receiptFactory = new Receipt5Factory(); break;
+            case 4: receiptFactory = new Receipt4Factory(); break;
+            case 3: receiptFactory = new Receipt3Factory(); break;
+            case 2: receiptFactory = new Receipt2Factory(); break;
+            default: receiptFactory = new Receipt1Factory();
+        }
+        IReceipt iReceipt = receiptFactory.newInstance(dummy);
 
-        IReceipt iReceipt = new Receipt5();
+        String font = iReceipt.font();
+        String css = iReceipt.css();
+        String html = iReceipt.html(dummy);
 
-        //TODO: 2023-05-05 항목이 늘어날 때 마다 사이즈가 커져야함.
-        // => 이 방법은 각 영수증 고유 길이와, 각 영수증당 항목에 대한 길이 변수를 두어 구현하자.
+        LocalTime nowTime = LocalTime.now();
+        LocalDateTime nowDateTime = LocalDateTime.now();
 
-        //TODO: 2023-05-07 png 파일 저장할 때, 파일 이름은 무엇으로 저장할 것인가?
-        // => 사원 정보 + 날짜 + 항목이름
-
-        //TODO: 2023-05-07 가지고 와야할 더미데이터는 무엇인가?
-        // => 총 구매액, 사용처, 날짜 및 시간 // 각 항목 등등
+        String formatedNow = nowDateTime.format(DateTimeFormatter.ofPattern("yyyyMMddHHmmss"));
 
         // TODO: 2023-05-07 : 결제 데이터와 결재 데이터에 들어가야할 항목들의 차이는?
         // => 결제 클래스와, 결재 클래스를 나눈다.
@@ -49,17 +69,6 @@ public class Maker2 {
         // => "결재"건에 대한 OCR 영수증은 하나로 통일.
 
         try {
-            // HTML 소스 코드 가져오기
-            String html = iReceipt.html(dummy);
-
-            // 폰트 코드 가져오기 =>
-            String font = iReceipt.font();
-
-            // CSS 소스 코드 가져오기
-            String css = iReceipt.css();
-
-            // 항목 가져오기 => 추후에 반복문으로 추출 할 예정.
-//            String object = receipt.object(dummy);
 
             // HTML과 CSS 결합하여 JEditorPane에 적용
             String styledHtml =
@@ -79,7 +88,7 @@ public class Maker2 {
             editorPane.print(graphics);
 
             // 이미지 파일로 저장
-            ImageIO.write(image, "png", new File("test5.png"));
+            ImageIO.write(image, "png", new File(formatedNow+dummy.getUser()+"_test.png"));
 
             System.out.println("이미지 파일 생성 성공");
 

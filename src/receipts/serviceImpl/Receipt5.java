@@ -1,8 +1,9 @@
-package receipts;
+package receipts.serviceImpl;
 
 import DTO.Dummy;
+import receipts.IReceipt;
 
-public class Receipt1 implements IReceipt {
+public class Receipt5 implements IReceipt {
 
     public String font() {
         return "<link rel=\"preconnect\" href=\"https://fonts.googleapis.com\">\n"
@@ -12,7 +13,9 @@ public class Receipt1 implements IReceipt {
 
     public String css() {
         return " .right { text-align: right;}"
-            + " .center { text-align: center;}"
+            + " .big { font-size: 20px; font-weight: bold;}"
+            + " .small { font-size: 14px;}"
+            + " .center { text-align: center; }"
             + " .left { text-align : left;}"
             + " .text { font-size : 14px; color: gray; text-align: center;}"
             + " table { border: solid 1px;}"
@@ -37,24 +40,14 @@ public class Receipt1 implements IReceipt {
             + " <tbody>\n"
             + "     <th>\n"
             + "         <tr>\n"
-            + "             <td colspan=\"4\">[상호명] "+dummy.getStore()+"</td>\n"
-            + "         </tr>\n"
+            + "             <td colspan=\"4\" class=\"center\">"+dummy.getStore()+"</td>\n"
             + "         <tr>\n"
-            + "             <td colspan=4>[대표자] "+dummy.getRepresentative()+"</td>\n"
-            + "         </tr>\n"
-            + "         <tr>\n"
-            + "             <td colspan=\"4\">[주소] "+dummy.getAddress()+"</td>\n"
-            + "         </tr>\n"
-            + "         <tr>\n"
-            + "             <td colspan=\"4\">[사업자번호] "+dummy.getBusinessLicense()+"</td>\n"
-            + "         </tr>\n"
-            + "         <tr>\n"
-            + "             <td colspan=\"4\">\n"
-            + "             <b>[구매 일자] "+dummy.getPaymentDate()+"</b> \n"
-            + "             <hr>\n"
-            + "             </td>\n"
+            + "             <td colspan=\"4\" class=\"big\" >[총 구매액] &nbsp; 50,000원</td>\n"
             + "         </tr>\n"
             + "     </th>\n"
+            + "         </tr>\n"
+            + "             <td colspan=\"4\"><hr></td>"
+            + "         </tr>"
             + "     <tr>\n"
             + "         <td class=\"center\"><b>상품명</b></td>\n"
             + "         <td class=\"center\"><b>단가</b></td>\n"
@@ -70,11 +63,22 @@ public class Receipt1 implements IReceipt {
             + "     <tr>\n"
             + "         <td colspan=4>------------------------------------------------------------------</td>\n"
             + "     </tr>\n"
-            + "     <tr>\n"
-            + "         <td colspan=2></td>\n"
-            + "         <td class=\"right\"><b>[총 구매액]</b></td>\n"
-            + "         <td class=\"center\"><b>data</b></td>\n"
-            + "     </tr>"
+            + "         <tr>\n"
+            + "             <td colspan=\"1\">[구매일자]</td>\n"
+            + "             <td colspan=\"3\" class=\"right\">"+dummy.getPaymentDate()+"</td>\n"
+            + "         </tr>\n"
+            + "         <tr>\n"
+            + "             <td colspan=\"2\">[사업자번호]</td>\n"
+            + "             <td colspan=\"2\" class=\"right\">"+dummy.getBusinessLicense()+"</td>\n"
+            + "         </tr>\n"
+            + "         <tr>\n"
+            + "             <td colspan=\"1\">[대표자]</td>\n"
+            + "             <td colspan=\"3\" class=\"right\">"+dummy.getRepresentative()+"</td>\n"
+            + "         </tr>\n"
+            + "         <tr>\n"
+            + "             <td colspan=\"1\">[주소]</td>"
+            + "             <td colspan=\"3\" class=\"small\">"+dummy.getAddress()+"</td>"
+            + "         </tr>\n"
             + "     <tr>\n"
             + "         <td colspan=4>------------------------------------------------------------------</td>\n"
             + "     </tr>\n"

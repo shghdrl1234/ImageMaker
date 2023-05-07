@@ -1,6 +1,7 @@
-package receipts;
+package receipts.serviceImpl;
 
 import DTO.Dummy;
+import receipts.IReceipt;
 
 public class Receipt4 implements IReceipt {
 
@@ -12,6 +13,7 @@ public class Receipt4 implements IReceipt {
 
     public String css() {
         return " .right { text-align: right;}"
+            + " .big { font-size: 20px; text-align: center; font-weight: bold;}"
             + " .center { text-align: center;}"
             + " .left { text-align : left;}"
             + " .text { font-size : 14px; color: gray; text-align: center;}"
@@ -37,7 +39,7 @@ public class Receipt4 implements IReceipt {
             + " <tbody>\n"
             + "     <th>\n"
             + "         <tr>\n"
-            + "             <td colspan=\"4\" class=\"center\">"+dummy.getStore()+"</td>\n"
+            + "             <td colspan=\"4\" class=\"big\">"+dummy.getStore()+"</td>\n"
             + "         </tr>\n"
             + "         <tr>\n"
             + "             <td colspan=\"1\">[구매일자]</td>\n"
