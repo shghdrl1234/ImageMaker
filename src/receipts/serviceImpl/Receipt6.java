@@ -1,7 +1,10 @@
 package receipts.serviceImpl;
 
 import DTO.Dummy;
+import DTO.ReceiptDTO;
 import receipts.IReceipt;
+import receipts.utils.ReceiptUtils;
+import receipts.utils.StringUtils;
 
 public class Receipt6 implements IReceipt {
 
@@ -25,7 +28,7 @@ public class Receipt6 implements IReceipt {
     }
 
     public String html(Dummy dummy) {
-
+        ReceiptDTO receiptDTO = ReceiptUtils.getReceiptData();
         String obj = "";
         for (Object o : dummy.getObj()) {
             String[] arr = (String[]) o;
@@ -41,11 +44,12 @@ public class Receipt6 implements IReceipt {
             + " <tbody>\n"
             + "     <th>\n"
             + "         <tr>\n"
-            + "             <td colspan=\"2\" rowspan=\"2\" class=\"bigStore\">"+dummy.getStore()+"</td>\n"
+            + "             <td colspan=\"2\" rowspan=\"2\" class=\"bigStore\">" + dummy.getStore()
+            + "</td>\n"
             + "             <td colspan=\"2\" class=\"big\" >[총 구매액]</td>\n"
             + "         </tr>\n"
             + "         <tr>\n"
-            + "             <td colspan=\"2\" class=\"big\"> &nbsp; 50,000원</td>\n"
+            + "             <td colspan=\"2\" class=\"big\"> &nbsp; " + dummy.getTotal() + "</td>\n"
             + "         </tr>\n"
             + "     </th>\n"
             + "         </tr>\n"
@@ -53,9 +57,9 @@ public class Receipt6 implements IReceipt {
             + "         </tr>"
             + "     <tr>\n"
             + "         <td class=\"center\"><b>상품명</b></td>\n"
-            + "         <td class=\"center\"><b>단가</b></td>\n"
-            + "         <td class=\"center\"><b>수량</b></td>\n"
-            + "         <td class=\"center\"><b>금액</b></td>\n"
+            + "         <td class=\"center\"><b>" + receiptDTO.getAmountName() + "</b></td>\n"
+            + "         <td class=\"center\"><b>" + receiptDTO.getCountName() + "</b></td>\n"
+            + "         <td class=\"center\"><b>" + receiptDTO.getPriceName() + "</b></td>\n"
             + "     </tr>\n"
             + "     <tr>"
             + "         <td colspan=\"4\">"
@@ -68,30 +72,32 @@ public class Receipt6 implements IReceipt {
             + "     </tr>\n"
             + "         <tr>\n"
             + "             <td colspan=\"1\">[구매일자]</td>\n"
-            + "             <td colspan=\"3\" class=\"right\">"+dummy.getPaymentDate()+"</td>\n"
+            + "             <td colspan=\"3\" class=\"right\">" + dummy.getPaymentDate() + "</td>\n"
             + "         </tr>\n"
             + "         <tr>\n"
             + "             <td colspan=\"2\">[사업자번호]</td>\n"
-            + "             <td colspan=\"2\" class=\"right\">"+dummy.getBusinessLicense()+"</td>\n"
+            + "             <td colspan=\"2\" class=\"right\">" + dummy.getBusinessLicense()
+            + "</td>\n"
             + "         </tr>\n"
             + "         <tr>\n"
             + "             <td colspan=\"1\">[대표자]</td>\n"
-            + "             <td colspan=\"3\" class=\"right\">"+dummy.getRepresentative()+"</td>\n"
+            + "             <td colspan=\"3\" class=\"right\">" + dummy.getRepresentative()
+            + "</td>\n"
             + "         </tr>\n"
             + "         <tr>\n"
             + "             <td colspan=\"1\">[주소]</td>"
-            + "             <td colspan=\"3\" class=\"small\">"+dummy.getAddress()+"</td>"
+            + "             <td colspan=\"3\" class=\"small\">" + dummy.getAddress() + "</td>"
             + "         </tr>\n"
             + "     <tr>\n"
             + "         <td colspan=4>------------------------------------------------------------------</td>\n"
             + "     </tr>\n"
             + "     <tr>\n"
             + "         <td colspan=1>[승인 번호]</td>\n"
-            + "         <td colspan=3 class=\"right\">"+dummy.getCardApproval()+"</td>\n"
+            + "         <td colspan=3 class=\"right\">" + dummy.getCardApproval() + "</td>\n"
             + "     </tr>\n"
             + "     <tr>\n"
             + "         <td colspan=1>[카드 종류]</td>\n"
-            + "         <td colspan=3 class=\"right\">"+ dummy.getCardType()+"</td>\n"
+            + "         <td colspan=3 class=\"right\">" + dummy.getCardType() + "</td>\n"
             + "     </tr>\n"
             + "     <tr>\n"
             + "         <td colspan=4>------------------------------------------------------------------</td>\n"

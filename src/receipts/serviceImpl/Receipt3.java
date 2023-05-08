@@ -1,7 +1,9 @@
 package receipts.serviceImpl;
 
 import DTO.Dummy;
+import DTO.ReceiptDTO;
 import receipts.IReceipt;
+import receipts.utils.ReceiptUtils;
 
 public class Receipt3 implements IReceipt {
 
@@ -22,7 +24,7 @@ public class Receipt3 implements IReceipt {
     }
 
     public String html(Dummy dummy) {
-
+        ReceiptDTO receiptDTO = ReceiptUtils.getReceiptData();
         String obj = "";
         for (Object o : dummy.getObj()) {
             String[] arr = (String[]) o;
@@ -63,9 +65,9 @@ public class Receipt3 implements IReceipt {
             + "     </th>\n"
             + "     <tr>\n"
             + "         <td class=\"center\"><b>상품명</b></td>\n"
-            + "         <td class=\"center\"><b>단가</b></td>\n"
-            + "         <td class=\"center\"><b>수량</b></td>\n"
-            + "         <td class=\"center\"><b>금액</b></td>\n"
+            + "         <td class=\"center\"><b>"+receiptDTO.getAmountName()+"</b></td>\n"
+            + "         <td class=\"center\"><b>"+receiptDTO.getCountName()+"</b></td>\n"
+            + "         <td class=\"center\"><b>"+receiptDTO.getPriceName()+"</b></td>\n"
             + "     </tr>\n"
             + "     <tr>"
             + "         <td colspan=\"4\">"
@@ -79,7 +81,7 @@ public class Receipt3 implements IReceipt {
             + "     <tr>\n"
             + "         <td colspan=2></td>\n"
             + "         <td class=\"right\"><b>[총 구매액]</b></td>\n"
-            + "         <td class=\"center\"><b>data</b></td>\n"
+            + "         <td class=\"center\"><b>"+dummy.getTotal()+"</b></td>\n"
             + "     </tr>"
             + "     <tr>\n"
             + "         <td colspan=4>------------------------------------------------------------------</td>\n"

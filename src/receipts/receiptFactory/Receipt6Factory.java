@@ -7,7 +7,7 @@ import receipts.serviceImpl.Receipt6;
 public class Receipt6Factory extends ReceiptFactory {
 
     @Override
-    protected IReceipt creatReceipt() {
+    protected IReceipt createReceipt() {
         return new Receipt6();
     }
 }

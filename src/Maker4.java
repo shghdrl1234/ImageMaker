@@ -4,12 +4,10 @@ import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 import java.util.Random;
 import javax.imageio.ImageIO;
@@ -22,20 +20,14 @@ import receipts.receiptFactory.Receipt3Factory;
 import receipts.receiptFactory.Receipt4Factory;
 import receipts.receiptFactory.Receipt5Factory;
 import receipts.receiptFactory.Receipt6Factory;
-import receipts.serviceImpl.Receipt1;
-import receipts.serviceImpl.Receipt2;
-import receipts.serviceImpl.Receipt3;
-import receipts.serviceImpl.Receipt4;
-import receipts.serviceImpl.Receipt5;
-import receipts.serviceImpl.Receipt6;
 
-public class Maker3 {
+public class Maker4 {
 
     public static void main(String[] args) {
 
         List data = new ArrayList();
-
-        data.add(new String[]{"안녕2","1,000","13","13,000"});
+        data.add(new String[]{"안녕", "1,000", "12", "12,000"});
+        data.add(new String[]{"안녕2", "1,000", "13", "13,000"});
 
         Dummy dummy = new Dummy();
         dummy.setObj(data);
@@ -47,16 +39,29 @@ public class Maker3 {
         dummy.setRepresentative("노홍기");
         dummy.setAddress("부산광역시 부산진구 부전 2동 000-000");
         dummy.setUser("shghdrl");
-        dummy.setTotal("3,000,000");
 
         ReceiptFactory receiptFactory;
         Random rd = new Random();
-        IReceipt iReceipt = new Receipt5();
-//        if(createReceiptImage(iReceipt)) {
-//            System.out.println("success");
-//        } else {
-//            System.out.println("fail");
-//        }
+        switch (rd.nextInt(6) + 1) {
+            case 6:
+                receiptFactory = new Receipt6Factory();
+                break;
+            case 5:
+                receiptFactory = new Receipt5Factory();
+                break;
+            case 4:
+                receiptFactory = new Receipt4Factory();
+                break;
+            case 3:
+                receiptFactory = new Receipt3Factory();
+                break;
+            case 2:
+                receiptFactory = new Receipt2Factory();
+                break;
+            default:
+                receiptFactory = new Receipt1Factory();
+        }
+        IReceipt iReceipt = receiptFactory.newInstance(dummy);
 
         String font = iReceipt.font();
         String css = iReceipt.css();
@@ -76,7 +81,7 @@ public class Maker3 {
 
             // HTML과 CSS 결합하여 JEditorPane에 적용
             String styledHtml =
-                    "<html><head>"
+                "<html><head>"
                     + font + "<style>"
                     + css + "</style></head><body>"
                     + html + "</body></html>";
@@ -84,15 +89,16 @@ public class Maker3 {
             JEditorPane editorPane = new JEditorPane();
             editorPane.setContentType("text/html");
             editorPane.setText(styledHtml);
-            editorPane.setSize(new Dimension(490, 560+data.size()*34));
+            editorPane.setSize(new Dimension(490, 560 + data.size() * 34));
 
             // HTML을 이미지로 렌더링
-            BufferedImage image = new BufferedImage(editorPane.getWidth(), editorPane.getHeight(), BufferedImage.TYPE_INT_ARGB);
+            BufferedImage image = new BufferedImage(editorPane.getWidth(), editorPane.getHeight(),
+                BufferedImage.TYPE_INT_ARGB);
             Graphics2D graphics = image.createGraphics();
             editorPane.print(graphics);
 
             // 이미지 파일로 저장
-            ImageIO.write(image, "png", new File(formatedNow+dummy.getUser()+"_test.png"));
+            ImageIO.write(image, "png", new File(formatedNow + dummy.getUser() + "_test.png"));
 
             System.out.println("이미지 파일 생성 성공");
 

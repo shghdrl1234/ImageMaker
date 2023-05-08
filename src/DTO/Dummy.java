@@ -11,7 +11,18 @@ public class Dummy {
     private String cardType;
     private String cardApproval;
     private String address;
+    private String total;
     private List<String> obj;
+
+
+    public String getTotal() {
+        return total;
+    }
+
+    public void setTotal(String total) {
+        this.total = total;
+    }
+
 
     public String getUser() {
         return user;

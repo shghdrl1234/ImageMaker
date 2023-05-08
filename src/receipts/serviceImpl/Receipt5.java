@@ -1,7 +1,9 @@
 package receipts.serviceImpl;
 
 import DTO.Dummy;
+import DTO.ReceiptDTO;
 import receipts.IReceipt;
+import receipts.utils.ReceiptUtils;
 
 public class Receipt5 implements IReceipt {
 
@@ -13,7 +15,8 @@ public class Receipt5 implements IReceipt {
 
     public String css() {
         return " .right { text-align: right;}"
-            + " .big { font-size: 20px; font-weight: bold;}"
+            + " .big { font-size: 20px; font-weight: bold; text-align: center;}"
+            + " .store { font-size: 30px; font-weight: bold; text-align: center;}"
             + " .small { font-size: 14px;}"
             + " .center { text-align: center; }"
             + " .left { text-align : left;}"
@@ -24,7 +27,7 @@ public class Receipt5 implements IReceipt {
     }
 
     public String html(Dummy dummy) {
-
+        ReceiptDTO receiptDTO = ReceiptUtils.getReceiptData();
         String obj = "";
         for (Object o : dummy.getObj()) {
             String[] arr = (String[]) o;
@@ -40,9 +43,10 @@ public class Receipt5 implements IReceipt {
             + " <tbody>\n"
             + "     <th>\n"
             + "         <tr>\n"
-            + "             <td colspan=\"4\" class=\"center\">"+dummy.getStore()+"</td>\n"
+            + "             <td rowspan=\"2\" colspan=\"2\" class=\"store\">"+dummy.getStore()+"</td>\n"
+            + "             <td colspan=\"2\" class=\"big\">[총 구매액]</td>\n"
             + "         <tr>\n"
-            + "             <td colspan=\"4\" class=\"big\" >[총 구매액] &nbsp; 50,000원</td>\n"
+            + "             <td colspan=\"2\" class=\"big\" > &nbsp; "+dummy.getTotal()+"</td>\n"
             + "         </tr>\n"
             + "     </th>\n"
             + "         </tr>\n"
@@ -50,9 +54,9 @@ public class Receipt5 implements IReceipt {
             + "         </tr>"
             + "     <tr>\n"
             + "         <td class=\"center\"><b>상품명</b></td>\n"
-            + "         <td class=\"center\"><b>단가</b></td>\n"
-            + "         <td class=\"center\"><b>수량</b></td>\n"
-            + "         <td class=\"center\"><b>금액</b></td>\n"
+            + "         <td class=\"center\"><b>"+receiptDTO.getAmountName()+"</b></td>\n"
+            + "         <td class=\"center\"><b>"+receiptDTO.getCountName()+"</b></td>\n"
+            + "         <td class=\"center\"><b>"+receiptDTO.getPriceName()+"</b></td>\n"
             + "     </tr>\n"
             + "     <tr>"
             + "         <td colspan=\"4\">"
