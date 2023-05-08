@@ -18,7 +18,7 @@ public class Receipt1 implements IReceipt {
             + " .center { text-align: center;}"
             + " .left { text-align : left;}"
             + " .text { font-size : 14px; color: gray; text-align: center;}"
-            + " table { border: solid 1px;}"
+            + " table { border: solid 1px; width:570;}"
             + " td { font-size : 15px;}"
             + " body { font: 'Nanum Gothic Coding';}";
     }
@@ -29,7 +29,7 @@ public class Receipt1 implements IReceipt {
         for (Object o : dummy.getObj()) {
             String[] arr = (String[]) o;
             obj += "<tr>"
-                + "<td class=\"center\"><b>" + arr[0] + "</b></td>"
+                + "<td class=\"left\"><b>" + arr[0] + "</b></td>"
                 + "<td class=\"center\"><b>" + arr[1] + "</b></td>"
                 + "<td class=\"center\"><b>" + arr[2] + "</b></td>"
                 + "<td class=\"center\"><b>" + arr[3] + "</b></td>"
@@ -71,7 +71,7 @@ public class Receipt1 implements IReceipt {
             + "     </tr>\n"
             + obj
             + "     <tr>\n"
-            + "         <td colspan=4>------------------------------------------------------------------</td>\n"
+            + "         <td colspan=4>--------------------------------------------------------------------------------</td>\n"
             + "     </tr>\n"
             + "     <tr>\n"
             + "         <td colspan=2></td>\n"
@@ -79,7 +79,7 @@ public class Receipt1 implements IReceipt {
             + "         <td class=\"center\"><b>"+dummy.getTotal()+"</b></td>\n"
             + "     </tr>"
             + "     <tr>\n"
-            + "         <td colspan=4>------------------------------------------------------------------</td>\n"
+            + "         <td colspan=4>--------------------------------------------------------------------------------</td>\n"
             + "     </tr>\n"
             + "     <tr>\n"
             + "         <td colspan=1>[승인 번호]</td>\n"
@@ -90,12 +90,12 @@ public class Receipt1 implements IReceipt {
             + "         <td colspan=3 class=\"right\">"+ dummy.getCardType()+"</td>\n"
             + "     </tr>\n"
             + "     <tr>\n"
-            + "         <td colspan=4>------------------------------------------------------------------</td>\n"
+            + "         <td colspan=4>--------------------------------------------------------------------------------</td>\n"
             + "     </tr>\n"
             + "     <tr>\n"
             + "         <td colspan=4 class=\"center\" class=\"text\"> 본 영수증은 거래의 참고용으로만 사용하시기 바랍니다.</td>"
             + "     </tr>\n"
-            + "         <td colspan=4>------------------------------------------------------------------</td>\n"
+            + "         <td colspan=4>--------------------------------------------------------------------------------</td>\n"
             + "     </tr>\n"
             + " </tbody>\n"
             + "</table>\n";

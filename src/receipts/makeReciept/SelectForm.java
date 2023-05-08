@@ -81,7 +81,7 @@ public class SelectForm {
             JEditorPane editorPane = new JEditorPane();
             editorPane.setContentType("text/html");
             editorPane.setText(styledHtml);
-            editorPane.setSize(new Dimension(490, 560 + data.getObj().size() * 34));
+            editorPane.setSize(new Dimension(585, 580 + data.getObj().size() * 34));
 
             // HTML을 이미지로 렌더링
             BufferedImage image = new BufferedImage(editorPane.getWidth(), editorPane.getHeight(),
