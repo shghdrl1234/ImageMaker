@@ -1,11 +1,0 @@
-
-v	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(Ôğ·ñ8 éÊÉÿ0
-i
-java:S1223"LRename this method to prevent any misunderstanding or make it a constructor.(¿Ì¼Š8 éÊÉÿ0
-j	java:S100"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¿Ì¼Š8°éÊÉÿ0
-@
-java:S2119!"Save and re-use this "Random".(®ø»›şÿÿÿÿ8²éÊÉÿ0
-Z	java:S106#"9Replace this use of System.out or System.err by a logger.(´‹¹öşÿÿÿÿ8ªØÎÉÿ0
-X	java:S125:"<This block of commented-out lines of code should be removed.(ß™¤8³éÊÉÿ0
-Q
-java:S1128"4Remove this unused import 'org.w3c.dom.ls.LSOutput'.(Ò½¾Š8µéÊÉÿ0

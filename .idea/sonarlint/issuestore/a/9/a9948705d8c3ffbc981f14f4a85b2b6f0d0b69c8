@@ -1,35 +1,0 @@
-
-i
-java:S1192M"GDefine a constant instead of duplicating this literal "</td>
-" 6 times.(è¾âåıÿÿÿÿ8³‹¹Æÿ0
-{
-java:S1192!"YDefine a constant instead of duplicating this literal "<td class=\"center\"><b>" 3 times.(Ú±ÈÓûÿÿÿÿ8³‹¹Æÿ0
-q
-java:S1192*"ODefine a constant instead of duplicating this literal "         <tr>
-" 6 times.(½èØŠúÿÿÿÿ8³‹¹Æÿ0
-m
-java:S11926"KDefine a constant instead of duplicating this literal "</b></td>
-" 4 times.(ÉÌç½şÿÿÿÿ8ë²òÇÿ0
-m
-java:S11924"KDefine a constant instead of duplicating this literal "     <tr>
-" 7 times.(½èØŠúÿÿÿÿ8³‹¹Æÿ0
-i
-java:S11929"LDefine a constant instead of duplicating this literal "     </tr>
-" 8 times.(ÑÍ¢8³‹¹Æÿ0
-„
-java:S11926"bDefine a constant instead of duplicating this literal "         <td class=\"center\"><b>" 4 times.(ÉÌç½şÿÿÿÿ8ÜÑƒËÿ0
-m
-java:S1192,"PDefine a constant instead of duplicating this literal "         </tr>
-" 6 times.(ÑÍ¢8³‹¹Æÿ0
-l
-java:S1192 "JDefine a constant instead of duplicating this literal "</b></td>" 4 times.(—ö©šøÿÿÿÿ8³‹¹Æÿ0
-Ñ
-java:S1192A"®Define a constant instead of duplicating this literal "         <td colspan=4>--------------------------------------------------------------------------------</td>
-" 4 times.(İ–ú”ÿÿÿÿÿ8ÊÄÎÿ0
-9
-java:S1643"Use a StringBuilder instead.(ÏçõÆ8´‹¹Æÿ0
-{	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(°¿†‡ùÿÿÿÿ8´‹¹Æÿ0
-O
-java:S6126"2Replace this String concatenation with Text block.(÷Êı¡8¾‹¹Æÿ0
-X
-java:S4838"6Change "Object" to the type handled by the Collection.(€’¢Šøÿÿÿÿ8¿‹¹Æÿ0
